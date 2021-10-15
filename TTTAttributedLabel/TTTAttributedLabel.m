@@ -1577,7 +1577,7 @@ afterInheritingLabelAttributesAndConfiguringWithBlock:(NSMutableAttributedString
 }
 #endif
 
-#pragma mark - NSCoding
+#pragma mark - NSSecureCoding
 
 - (void)encodeWithCoder:(NSCoder *)coder {
     [super encodeWithCoder:coder];
@@ -1617,90 +1617,90 @@ afterInheritingLabelAttributesAndConfiguringWithBlock:(NSMutableAttributedString
     [self commonInit];
 
     if ([coder containsValueForKey:NSStringFromSelector(@selector(enabledTextCheckingTypes))]) {
-        self.enabledTextCheckingTypes = [[coder decodeObjectForKey:NSStringFromSelector(@selector(enabledTextCheckingTypes))] unsignedLongLongValue];
+        self.enabledTextCheckingTypes = [[coder decodeObjectOfClass:[NSTextCheckingTypes class] forKey:NSStringFromSelector(@selector(enabledTextCheckingTypes))] unsignedLongLongValue];
     }
 
     if ([NSMutableParagraphStyle class]) {
         if ([coder containsValueForKey:NSStringFromSelector(@selector(linkAttributes))]) {
-            self.linkAttributes = [coder decodeObjectForKey:NSStringFromSelector(@selector(linkAttributes))];
+            self.linkAttributes = [coder decodeObjectOfClass:[NSDictionary class] forKey:NSStringFromSelector(@selector(linkAttributes))];
         }
 
         if ([coder containsValueForKey:NSStringFromSelector(@selector(activeLinkAttributes))]) {
-            self.activeLinkAttributes = [coder decodeObjectForKey:NSStringFromSelector(@selector(activeLinkAttributes))];
+            self.activeLinkAttributes = [coder decodeObjectOfClass:[NSDictionary class] forKey:NSStringFromSelector(@selector(activeLinkAttributes))];
         }
 
         if ([coder containsValueForKey:NSStringFromSelector(@selector(inactiveLinkAttributes))]) {
-            self.inactiveLinkAttributes = [coder decodeObjectForKey:NSStringFromSelector(@selector(inactiveLinkAttributes))];
+            self.inactiveLinkAttributes = [coder decodeObjectOfClass:[NSDictionary class] forKey:NSStringFromSelector(@selector(inactiveLinkAttributes))];
         }
     }
 
     if ([coder containsValueForKey:NSStringFromSelector(@selector(links))]) {
-        NSArray *oldLinks = [coder decodeObjectForKey:NSStringFromSelector(@selector(links))];
+        NSArray *oldLinks = [coder decodeObjectOfClass:[NSArray class] forKey:NSStringFromSelector(@selector(links))];
         [self addLinksWithTextCheckingResults:oldLinks attributes:nil];
     }
 
     if ([coder containsValueForKey:NSStringFromSelector(@selector(linkModels))]) {
-        self.linkModels = [coder decodeObjectForKey:NSStringFromSelector(@selector(linkModels))];
+        self.linkModels = [coder decodeObjectOfClass:[NSArray class] forKey:NSStringFromSelector(@selector(linkModels))];
     }
 
     if ([coder containsValueForKey:NSStringFromSelector(@selector(shadowRadius))]) {
-        self.shadowRadius = [[coder decodeObjectForKey:NSStringFromSelector(@selector(shadowRadius))] floatValue];
+        self.shadowRadius = [[coder decodeObjectOfClass:[CGFloat class] forKey:NSStringFromSelector(@selector(shadowRadius))] floatValue];
     }
 
     if ([coder containsValueForKey:NSStringFromSelector(@selector(highlightedShadowRadius))]) {
-        self.highlightedShadowRadius = [[coder decodeObjectForKey:NSStringFromSelector(@selector(highlightedShadowRadius))] floatValue];
+        self.highlightedShadowRadius = [[coder decodeObjectOfClass:[CGFloat class] forKey:NSStringFromSelector(@selector(highlightedShadowRadius))] floatValue];
     }
 
     if ([coder containsValueForKey:NSStringFromSelector(@selector(highlightedShadowOffset))]) {
-        self.highlightedShadowOffset = [coder decodeCGSizeForKey:NSStringFromSelector(@selector(highlightedShadowOffset))];
+        self.highlightedShadowOffset = [coder decodeObjectOfClass:[CGSize class] forKey:NSStringFromSelector(@selector(highlightedShadowOffset))];
     }
 
     if ([coder containsValueForKey:NSStringFromSelector(@selector(highlightedShadowColor))]) {
-        self.highlightedShadowColor = [coder decodeObjectForKey:NSStringFromSelector(@selector(highlightedShadowColor))];
+        self.highlightedShadowColor = [coder decodeObjectOfClass:[UIColor class] forKey:NSStringFromSelector(@selector(highlightedShadowColor))];
     }
 
     if ([coder containsValueForKey:NSStringFromSelector(@selector(kern))]) {
-        self.kern = [[coder decodeObjectForKey:NSStringFromSelector(@selector(kern))] floatValue];
+        self.kern = [[coder decodeObjectOfClass:[CGFloat class] forKey:NSStringFromSelector(@selector(kern))] floatValue];
     }
 
     if ([coder containsValueForKey:NSStringFromSelector(@selector(firstLineIndent))]) {
-        self.firstLineIndent = [[coder decodeObjectForKey:NSStringFromSelector(@selector(firstLineIndent))] floatValue];
+        self.firstLineIndent = [[coder decodeObjectOfClass:[CGFloat class] forKey:NSStringFromSelector(@selector(firstLineIndent))] floatValue];
     }
 
     if ([coder containsValueForKey:NSStringFromSelector(@selector(lineSpacing))]) {
-        self.lineSpacing = [[coder decodeObjectForKey:NSStringFromSelector(@selector(lineSpacing))] floatValue];
+        self.lineSpacing = [[coder decodeObjectOfClass:[CGFloat class] forKey:NSStringFromSelector(@selector(lineSpacing))] floatValue];
     }
 
     if ([coder containsValueForKey:NSStringFromSelector(@selector(minimumLineHeight))]) {
-        self.minimumLineHeight = [[coder decodeObjectForKey:NSStringFromSelector(@selector(minimumLineHeight))] floatValue];
+        self.minimumLineHeight = [[coder decodeObjectOfClass:[CGFloat class] forKey:NSStringFromSelector(@selector(minimumLineHeight))] floatValue];
     }
 
     if ([coder containsValueForKey:NSStringFromSelector(@selector(maximumLineHeight))]) {
-        self.maximumLineHeight = [[coder decodeObjectForKey:NSStringFromSelector(@selector(maximumLineHeight))] floatValue];
+        self.maximumLineHeight = [[coder decodeObjectOfClass:[CGFloat class] forKey:NSStringFromSelector(@selector(maximumLineHeight))] floatValue];
     }
 
     if ([coder containsValueForKey:NSStringFromSelector(@selector(lineHeightMultiple))]) {
-        self.lineHeightMultiple = [[coder decodeObjectForKey:NSStringFromSelector(@selector(lineHeightMultiple))] floatValue];
+        self.lineHeightMultiple = [[coder decodeObjectOfClass:[CGFloat class] forKey:NSStringFromSelector(@selector(lineHeightMultiple))] floatValue];
     }
 
     if ([coder containsValueForKey:NSStringFromSelector(@selector(textInsets))]) {
-        self.textInsets = [coder decodeUIEdgeInsetsForKey:NSStringFromSelector(@selector(textInsets))];
+        self.textInsets = [coder decodeObjectOfClass:[UIEdgeInsets class] forKey:NSStringFromSelector(@selector(textInsets))];
     }
 
     if ([coder containsValueForKey:NSStringFromSelector(@selector(verticalAlignment))]) {
-        self.verticalAlignment = [coder decodeIntegerForKey:NSStringFromSelector(@selector(verticalAlignment))];
+        self.verticalAlignment = [coder decodeObjectOfClass:[TTTAttributedLabelVerticalAlignment class] forKey:NSStringFromSelector(@selector(verticalAlignment))];
     }
 
     if ([coder containsValueForKey:NSStringFromSelector(@selector(attributedTruncationToken))]) {
-        self.attributedTruncationToken = [coder decodeObjectForKey:NSStringFromSelector(@selector(attributedTruncationToken))];
+        self.attributedTruncationToken = [coder decodeObjectOfClass:[NSAttributedString class] forKey:NSStringFromSelector(@selector(attributedTruncationToken))];
     }
 
     if ([coder containsValueForKey:NSStringFromSelector(@selector(linkBackgroundEdgeInset))]) {
-        self.linkBackgroundEdgeInset = UIEdgeInsetsFromString([coder decodeObjectForKey:NSStringFromSelector(@selector(linkBackgroundEdgeInset))]);
+        self.linkBackgroundEdgeInset = UIEdgeInsetsFromString([coder decodeObjectOfClass:[UIEdgeInsets class] forKey:NSStringFromSelector(@selector(linkBackgroundEdgeInset))]);
     }
 
     if ([coder containsValueForKey:NSStringFromSelector(@selector(attributedText))]) {
-        self.attributedText = [coder decodeObjectForKey:NSStringFromSelector(@selector(attributedText))];
+        self.attributedText = [coder decodeObjectOfClass:[NSAttributedString class] forKey:NSStringFromSelector(@selector(attributedText))];
     } else {
         self.text = super.text;
     }
@@ -1762,7 +1762,7 @@ afterInheritingLabelAttributesAndConfiguringWithBlock:(NSMutableAttributedString
     return _accessibilityValue;
 }
 
-#pragma mark - NSCoding
+#pragma mark - NSSecureCoding
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:self.result forKey:NSStringFromSelector(@selector(result))];
@@ -1774,11 +1774,11 @@ afterInheritingLabelAttributesAndConfiguringWithBlock:(NSMutableAttributedString
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super init])) {
-        _result = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(result))];
-        _attributes = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(attributes))];
-        _activeAttributes = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(activeAttributes))];
-        _inactiveAttributes = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(inactiveAttributes))];
-        self.accessibilityValue = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(accessibilityValue))];
+      	_result = [aDecoder decodeObjectOfClass:[NSTextCheckingResult class] forKey:NSStringFromSelector(@selector(result))];
+        _attributes = [aDecoder decodeObjectOfClass:[NSDictionary class] forKey:NSStringFromSelector(@selector(attributes))];
+        _activeAttributes = [aDecoder decodeObjectOfClass:[NSDictionary class] forKey:NSStringFromSelector(@selector(activeAttributes))];
+        _inactiveAttributes = [aDecoder decodeObjectOfClass:[NSDictionary class] forKey:NSStringFromSelector(@selector(inactiveAttributes))];
+        self.accessibilityValue = [aDecoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(accessibilityValue))];
     }
     
     return self;

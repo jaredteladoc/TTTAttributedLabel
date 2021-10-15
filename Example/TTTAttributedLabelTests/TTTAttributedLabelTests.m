@@ -1008,7 +1008,7 @@ static inline void TTTSimulateLongPressOnLabelAtPointWithDuration(TTTAttributedL
     expect([label canPerformAction:@selector(paste:) withSender:nil]).to.beFalsy();
 }
 
-#pragma mark - NSCoding
+#pragma mark - NSSecureCoding
 
 - (void)testEncodingLabel {
     label.text = TTTAttributedTestString();
